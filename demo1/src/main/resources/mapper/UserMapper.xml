@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo1.mapper.UserMapper">
+
+    <sql id="columns">
+      id,username,birthday,sex,address,password
+    </sql>
+
+    <sql id="values">
+        #{id},#{username},#{birthday},#{sex},#{address},#{password}
+    </sql>
+
+    <sql id="where">
+        <if test="id !='' and id !=null">
+            and id = #{id}
+        </if>
+        <if test="username !='' and username !=null">
+            and username = #{username}
+        </if>
+        <if test="password !='' and password !=null">
+            and password = #{password}
+        </if>
+        <if test="sex !='' and sex !=null">
+            and sex = #{sex}
+        </if>
+        <if test="address !='' and address !=null">
+            and address LIKE CONCAT('%',#{address},'%')
+        </if>
+        <if test="birthday !='' and birthday !=null">
+            <![CDATA[ and DATE_FORMAT(birthday , '%Y-%m-%d')>=  DATE_FORMAT(#{birthday}, '%Y-%m-%d')   ]]>
+        </if>
+    </sql>
+
+    <sql id="set">
+        <if test="username !='' and username !=null">
+            username = #{username}
+        </if>
+        <if test="password !='' and password !=null">
+            ,password = #{password}
+        </if>
+        <if test="sex !='' and sex !=null">
+            ,sex = #{sex}
+        </if>
+        <if test="address !='' and address !=null">
+            ,address LIKE CONCAT('%',#{address},'%')
+        </if>
+        <if test="birthday !='' and birthday !=null">
+            ,<![CDATA[ DATE_FORMAT(birthday , '%Y-%m-%d')>=  DATE_FORMAT(#{birthday}, '%Y-%m-%d')   ]]>
+        </if>
+    </sql>
+
+    <select id="getList" resultType="UserInfo">
+        select <include refid="columns"/> from user
+    </select>
+
+    <insert id="insert" parameterType="UserInfo">
+        insert into user(<include refid="columns"/>)
+        values(<include refid="values"/>)
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        delete from user where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="UserInfo">
+        update user set
+        <include refid="set"/>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <select id="query" parameterType="UserInfo" resultType="UserInfo">
+        select <include refid="columns"/> from user
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+</mapper>
