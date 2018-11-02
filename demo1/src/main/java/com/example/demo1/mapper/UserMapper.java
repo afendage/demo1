@@ -1,25 +1,33 @@
 package com.example.demo1.mapper;
 
-import com.example.demo1.entity.UserInfo;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-
+import com.example.demo1.entity.User;
+import com.example.demo1.entity.UserExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserMapper {
+    int countByExample(UserExample example);
 
-    List<UserInfo> getList();
+    int deleteByExample(UserExample example);
 
-    void insert(UserInfo userInfo);
+    int deleteByPrimaryKey(Integer id);
 
-    void delete(String id);
+    int insert(User record);
 
-    void update(UserInfo userInfo);
+    int insertSelective(User record);
 
-    List<UserInfo> query(UserInfo userInfo);
+    List<User> selectByExample(UserExample example);
 
-    @Select("select * from user where id =#{id}")
-    List<UserInfo> query1(UserInfo userInfo);
+    User selectByPrimaryKey(Integer id);
 
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }

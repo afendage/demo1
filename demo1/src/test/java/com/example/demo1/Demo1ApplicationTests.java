@@ -1,7 +1,7 @@
 package com.example.demo1;
 
 import com.example.demo1.entity.UserInfo;
-import com.example.demo1.service.UserService;
+import com.example.demo1.service.UserInfoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class Demo1ApplicationTests {
     private MockHttpSession session;
 
     @Autowired
-    private UserService userService;
+    private UserInfoService userInfoService;
 
     @Test
     public void contextLoads() {
@@ -50,7 +50,7 @@ public class Demo1ApplicationTests {
 
     @Test
     public void testUserGetList2() throws Exception {
-        List<UserInfo> list = userService.getList();
+        List<UserInfo> list = userInfoService.getList();
         System.out.println(list.size());
     }
 
@@ -99,7 +99,7 @@ public class Demo1ApplicationTests {
         userInfo.setUsername("finger");
         userInfo.setSex("2");
         userInfo.setPassword("12313");
-        userService.insert(userInfo);
+        userInfoService.insert(userInfo);
     }
 
     @Test

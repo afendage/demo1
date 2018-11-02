@@ -1,6 +1,7 @@
 package com.example.demo1.service.impl;
 
-import com.example.demo1.entity.UserInfo;
+import com.example.demo1.entity.User;
+import com.example.demo1.entity.UserExample;
 import com.example.demo1.mapper.UserMapper;
 import com.example.demo1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,39 +10,63 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserMapper userMapper;
 
     @Override
-    public List<UserInfo> getList() {
-        return userMapper.getList();
+    public int countByExample(UserExample example) {
+        return 0;
     }
 
     @Override
-    public void insert(UserInfo userInfo) {
-        userMapper.insert(userInfo);
+    public int deleteByExample(UserExample example) {
+        return 0;
     }
 
     @Override
-    public void delete(String id) {
-        userMapper.delete(id);
+    public int deleteByPrimaryKey(Integer id) {
+        return 0;
     }
 
     @Override
-    public void update(UserInfo userInfo) {
-        userMapper.update(userInfo);
+    public int insert(User record) {
+        return userMapper.insert(record);
     }
 
     @Override
-    public List<UserInfo> query(UserInfo userInfo) {
-        return userMapper.query(userInfo);
+    public int insertSelective(User record) {
+        return 0;
     }
 
     @Override
-    public List<UserInfo> query1(UserInfo userInfo) {
-        return userMapper.query1(userInfo);
+    public List<User> selectByExample(UserExample example) {
+        return null;
     }
 
+    @Override
+    public User selectByPrimaryKey(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByExampleSelective(User record, UserExample example) {
+        return 0;
+    }
+
+    @Override
+    public int updateByExample(User record, UserExample example) {
+        return 0;
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(User record) {
+        return 0;
+    }
+
+    @Override
+    public int updateByPrimaryKey(User record) {
+        return 0;
+    }
 }
