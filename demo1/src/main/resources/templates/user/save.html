@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>用户管理</title>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/easyui/demo.css">
+    <script type="text/javascript" src="/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+    <h2>用户保存</h2>
+    <form id="save" action="" method="post">
+        用户名：<input type="text" name="username"/><br/>
+        密码：<input type="password" name="password"/><br/>
+        昵称：<input type="text" name="nickname"/><br/>
+        手机：<input type="text" name="phone"/><br/>
+        邮箱：<input type="text" name="email"/><br/>
+    </form>
+    <div style="text-align:center;padding:5px 0">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="save()" style="width:80px">Submit</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">Clear</a>
+    </div>
+<br />
+    <script>
+        function save(){
+            $.ajax({
+                url: "/user/save",
+                type: "post",
+                data: JSON.stringify($("#save").serializeObject()),
+                contentType: "application/json",
+                success: function (result) {
+                    alert("Ok!");
+                },
+                fail: function (result) {
+                    alert("failed！");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

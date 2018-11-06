@@ -1,7 +1,6 @@
 package com.example.demo1;
 
 import com.example.demo1.entity.User;
-import com.example.demo1.entity.UserInfo;
 import com.example.demo1.service.UserInfoService;
 import com.example.demo1.service.UserService;
 import com.example.demo1.system.utils.Md5Util;
@@ -22,7 +21,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Date;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

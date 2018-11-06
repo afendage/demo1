@@ -3,7 +3,7 @@ CREATE TABLE `u_operation` (
   `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '操作名称',
   `code` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '操作编码',
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '拦截的 url',
-  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '描述',
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '描述',
   `createtime` datetime NOT NULL COMMENT '创建时间',
   `createuser` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '创建用户',
   `updatetime` datetime DEFAULT NULL COMMENT '修改时间',

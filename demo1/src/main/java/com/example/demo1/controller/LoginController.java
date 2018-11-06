@@ -28,7 +28,7 @@ public class LoginController {
 
     @PostMapping("/loginPost")
     @ResponseBody
-    public Map<String, Object> loginPost(String account, String password, HttpSession session) {
+    public Map<String, Object> loginPost(String username, String password, HttpSession session) {
         Map<String, Object> map = new HashMap<>();
         if (!"123456".equals(password)) {
             map.put("success", false);
@@ -37,7 +37,8 @@ public class LoginController {
         }
 
         // 设置session
-        session.setAttribute(WebSecurityConfig.SESSION_KEY, account);
+        session.setAttribute(WebSecurityConfig.SESSION_KEY, username);
+        session.setMaxInactiveInterval(30000);
 
         map.put("success", true);
         map.put("message", "登录成功");
