@@ -17,17 +17,17 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int countByExample(UserExample example) {
-        return 0;
+        return userMapper.countByExample(example);
     }
 
     @Override
     public int deleteByExample(UserExample example) {
-        return 0;
+        return userMapper.deleteByExample(example);
     }
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return userMapper.deleteByPrimaryKey(id);
     }
 
     @Override
@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int insertSelective(User record) {
-        return 0;
+        return userMapper.insertSelective(record);
     }
 
     @Override
     public List<User> selectByExample(UserExample example) {
-        return null;
+        return userMapper.selectByExample(example);
     }
 
     @Override
@@ -52,21 +52,21 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int updateByExampleSelective(User record, UserExample example) {
-        return 0;
+        return userMapper.updateByExampleSelective(record,example);
     }
 
     @Override
     public int updateByExample(User record, UserExample example) {
-        return 0;
+        return userMapper.updateByExample(record,example);
     }
 
     @Override
     public int updateByPrimaryKeySelective(User record) {
-        return 0;
+        return updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKey(User record) {
-        return 0;
+        return userMapper.updateByPrimaryKey(record);
     }
 }

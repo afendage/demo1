@@ -3,13 +3,13 @@ package com.example.demo1.controller;
 import com.example.demo1.entity.User;
 import com.example.demo1.service.UserService;
 import com.example.demo1.system.config.WebSecurityConfig;
+import com.example.demo1.system.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.websocket.Session;
 import java.util.Date;
 
 @RestController
@@ -29,6 +29,7 @@ public class UserController {
         if(null == user.getId()){
             user.setCreateuser("1");
             user.setCreatetime(new Date());
+            user.setPassword(Md5Util.MD5Encode(user.getPassword()));
             return userService.insert(user);
         }else{
             User u = (User) request.getSession().getAttribute(WebSecurityConfig.SESSION_KEY);

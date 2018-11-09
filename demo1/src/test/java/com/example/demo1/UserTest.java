@@ -1,6 +1,7 @@
 package com.example.demo1;
 
 import com.example.demo1.entity.User;
+import com.example.demo1.entity.UserExample;
 import com.example.demo1.service.UserInfoService;
 import com.example.demo1.service.UserService;
 import com.example.demo1.system.utils.Md5Util;
@@ -21,6 +22,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -71,17 +73,11 @@ public class UserTest {
 
     @Test
     public void t(){
-        /*User user = new User();
-        user.setId(2);
-        user.setUsername("romeo");
-        String password = Md5Util.MD5Encode("123456");
-        user.setPassword(password);
-        userService.insertSelective(user);*/
-       /* User user = userService.selectByPrimaryKey(1);
-        System.out.println(user.getUsername());*/
-
-        User user = userService.selectByPrimaryKey(1);
-        System.out.println(user.getUsername());
+        UserExample example = new UserExample();
+        example.createCriteria().andUsernameEqualTo("a1");
+        example.createCriteria().andPasswordEqualTo(Md5Util.MD5Encode("123456"));
+        List<User> list = userService.selectByExample(example);
+        System.out.println(list.get(0).getUsername());
     }
 
 }
