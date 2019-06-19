@@ -1,0 +1,39 @@
+
+#springboot + mybatis 快速整合
+1. 新建springboot 项目，选择 web,mybatis,mysql,jdbc 等插件
+2. 配置 application.properties ~ mybatis，mysql 项
+3. 配置一个 sqlMapConfig.xml ，文件内可以不做任何配置
+4. 测试：新增 xml 映射文件, mapper 接口.....
+
+#springboot 测试案列
+参考测试类
+
+
+#mybatis 自动生成步骤
+1. 配置generatorConfig.xml
+2. 在pom.xml中位置mybatis-generator的插件
+3. 完成以上两步之后。就会在idea maven中看到：直接点击mybatis-generator:generate就可生成
+* mybatis逆向工程自定义生成实体名称
+    如果你的表名是tb_user，而你想要生成实体名是User。在generatorConfig.xml文件中做如下配置：
+       <table schema="" tableName="%">  
+           <columnRenamingRule searchString="^[^_]+" replaceString=""/>  
+       </table>
+       说明一下，searchString="^[^_]+" 这个查找字符串就是使用正则表达式来匹配表的字段名
+
+       <table schema="" tableName="tb%">
+           <domainObjectRenamingRule searchString="^tb" replaceString="" />
+       </table>
+       上面两种方式，问题如果还没有得到解决的话，请试下下面的这种方式
+
+       <table schema="" tableName="tb_user" domainObjectName="User"></table>
+       直接在table标签中加入domainObjectName属性，值就是你要自定义的实体名称
+
+
+# spring boot 配置详解 ...
+
+
+1. springboot + mybatis
+
+2. springboot + shiro
+
+3. sso

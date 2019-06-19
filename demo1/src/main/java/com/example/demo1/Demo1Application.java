@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @SpringBootApplication
-@Import({
-})
 public class Demo1Application {
 
     public static void main(String[] args) {
