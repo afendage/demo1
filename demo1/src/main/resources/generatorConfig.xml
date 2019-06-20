@@ -45,7 +45,7 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="" tableName="aa" domainObjectName="aa"/>
+        <table schema="" tableName="u_organization" domainObjectName="Organization"/>
         <!--<table schema="" tableName="u_user" domainObjectName="User"/>-->
         <!--<table schema="" tableName="u_user_group_relation" domainObjectName="UserGroupRelation"/>
         <table schema="" tableName="u_user_role_relation" domainObjectName="UserRoleRelation"/>
