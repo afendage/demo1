@@ -69,4 +69,9 @@ public class OrganizationServiceImpl implements OrganizationService {
     public int updateByPrimaryKey(Organization record) {
         return organizationMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<Organization> query(Organization record) {
+        return organizationMapper.query(record);
+    }
 }

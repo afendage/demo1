@@ -8,26 +8,28 @@ import java.util.List;
 
 public interface OrganizationService {
 
-    int countByExample(OrganizationExample example);
+    int countByExample(OrganizationExample example) throws Exception;
 
-    int deleteByExample(OrganizationExample example);
+    int deleteByExample(OrganizationExample example) throws Exception;
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer id) throws Exception;
 
-    int insert(Organization record);
+    int insert(Organization record) throws Exception;
 
-    int insertSelective(Organization record);
+    int insertSelective(Organization record) throws Exception;
 
-    List<Organization> selectByExample(OrganizationExample example);
+    List<Organization> selectByExample(OrganizationExample example) throws Exception;
 
-    Organization selectByPrimaryKey(Integer id);
+    Organization selectByPrimaryKey(Integer id) throws Exception;
 
-    int updateByExampleSelective(@Param("record") Organization record, @Param("example") OrganizationExample example);
+    int updateByExampleSelective(@Param("record") Organization record, @Param("example") OrganizationExample example) throws Exception;
 
-    int updateByExample(@Param("record") Organization record, @Param("example") OrganizationExample example);
+    int updateByExample(@Param("record") Organization record, @Param("example") OrganizationExample example) throws Exception;
 
-    int updateByPrimaryKeySelective(Organization record);
+    int updateByPrimaryKeySelective(Organization record) throws Exception;
 
-    int updateByPrimaryKey(Organization record);
+    int updateByPrimaryKey(Organization record) throws Exception;
+
+    List<Organization> query(Organization record);
 
 }
