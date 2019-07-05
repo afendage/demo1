@@ -6,6 +6,8 @@ import com.example.demo1.service.UserInfoService;
 import com.example.demo1.service.UserService;
 import com.example.demo1.system.utils.Md5Util;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -80,4 +82,15 @@ public class UserTest {
         System.out.println(list.get(0).getUsername());
     }
 
+    @Test
+    public void pageTest(){
+        PageHelper.startPage(1, 3, true);
+        List<User> list = userService.selectByExample(null);
+        System.out.println(list.size());
+
+        PageInfo<User> pageInfo = new PageInfo<>(list);
+        System.out.println("数据总数：" + pageInfo.getTotal());
+        System.out.println("数据总页数：" + pageInfo.getPages());
+        System.out.println("最后一页：" + pageInfo.getLastPage());
+    }
 }
